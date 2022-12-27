@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <title>Wei Chen's Todo List</title>
+    </head>
+    <body>
+        <div>Wei Chen</div>
+        <button id="todo-button" onclick="changeButton()">Click</button>
+
+        <div id="counter">0</div>
+        <button onclick="addOne()">Up</button>
+
+        <div id="counterdown">0</div>
+        <button onclick="minusOne()">Down</button>
+
+        <input id="content" type="text" />
+        <button  onclick="addDIV()">Add to List</button>
+
+        <script>
+            function changeButton(){
+                let textbox = document.getElementById('todo-button');
+                textbox.innerText = "Done";
+            }
+            
+            /*
+            function addOne(){
+                let textbox = document.getElementById('counter');
+                let result = Number(textbox.value) + 1;
+                textbtdox.innerText = result;
+            }
+            */
+
+            let count = 0; 
+
+            function addOne(){
+                count =  count +1;
+                let counter = document.getElementById('counter');
+                counter.innerText = count;
+            }
+
+            let countdown = 0;
+
+            function minusOne(){
+                countdown =  countdown - 1;
+                let counter = document.getElementById('counterdown');
+                counter.innerText = countdown;
+            }
+
+            function addDIV(){
+                let textbox = document.getElementById('content');
+                let content = textbox.value;
+
+                let element = document.createElement('div');
+                element.innerText = content;
+                document.body.appendChild(element);
+            }
+
+
+        </script>
+    </body>
+</html>

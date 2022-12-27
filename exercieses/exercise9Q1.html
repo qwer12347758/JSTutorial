@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>exercise 9 question 1
+        </title>
+    </head>
+    <body>
+
+        <button onclick="AddToCart('Apple')">Apple</button>
+        <button onclick="AddToCart('Tomato')">Tomato</button>
+        <button onclick="AddToCart('Egg')">Eggs</button>
+        <button onclick="clearall()">Clear</button>
+        <div id="cart"></div>
+
+        <script>
+            function AddToCart(food){
+                let element= document.createElement('div');
+                element.innerText = food;
+
+                let elementdiv = document.getElementById('cart');
+                elementdiv.appendChild(element);
+            }
+
+            function clearall(){
+                document.getElementById('cart').innerHTML='';
+            }
+
+        </script>
+    </body>
+</html>

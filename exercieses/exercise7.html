@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <title>Wei Chen's Todo List</title>
+    </head>
+    <body>
+        <div>Wei Chen</div>
+        <button>Press Me</button>
+        <script>
+            function toUpper(param1){
+                let result =[];
+
+                param1.forEach(function toUpper(str){
+                    result.push(str.toUpperCase());
+                });
+                
+                console.log(result);
+            }
+
+            toUpper(['hello','world']);
+
+            function arrayDouble(arrayA){
+                let result = [];
+                arrayA.forEach(function double(str){
+                    result.push(str);
+                    result.push(str);
+                });
+                
+                console.log(result);
+            }
+            arrayDouble(['A','B']);
+            
+            function arraySum(arrayA){
+                let total = 0;
+                arrayA.forEach(function addEach(num){
+                    total= total +num;
+                });
+                console.log(total);
+            }
+            arraySum([1,2,3,4,5,6,7]);
+
+        </script>
+    </body>
+</html>

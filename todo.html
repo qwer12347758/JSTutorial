@@ -1,0 +1,125 @@
+<html>
+    <head>
+        <title>My Todo APP</title>
+    </head>
+    <body>
+
+        <input id="todo-title" type="text" />
+
+        <input id="date-picker" type="date"/>
+
+        <!--<button onclick="todo.push('new todo');">Press Me</button>-->
+        <button onclick="addTodo()">Add Todo</button>
+        
+        <div id="todo-list"></div>
+        <!--<div>Get Groceries</div>
+        <div>Wash Car</div>
+        <div>Make Dinner</div>-->
+        <script>
+            /*
+            let todo1 = 'Get groceries'; 
+            let todo2 = 'Wash Car';
+            let todo3 = 'Make dinner';
+            let todo4 = 'Do Laudry';
+            */
+        
+            //const todo =['Get Groceries', 'Wash Car', 'Make Dinner'];
+            //todo.push('another todo');
+            //todo.pop();
+
+            const todo=[{
+                title: 'Get groceries',
+                dueDate: '2022-12-28',
+                id:'id1'
+            },{
+                title:'Wash Car',
+                dueDate:'2023-1-2',
+                id:'id2'
+            },{
+                title:'Make Dinner',
+                dueDate:'2023-1-1',
+                id:'id3'
+            }];
+
+            render();
+            /*
+            todo.forEach(function(todos){
+                let element = document.createElement('div');
+                element.innerText = todos;
+                document.body.appendChild(element);
+            });
+            */
+
+            function addTodo(){
+                const textbox = document.getElementById('todo-title');
+                const title=textbox.value;
+
+                const datePicker = document.getElementById('date-picker');
+                const dueDate = datePicker.value;
+
+                const id = new Date().getTime();
+
+                todo.push({
+                    title:title,
+                    dueDate:dueDate,
+                    id: id
+                });
+
+                render();
+            }
+
+            function render (){
+                //reset the list to empety
+                document.getElementById('todo-list').innerHTML = '';
+
+                todo.forEach(function(todo){
+                    const element = document.createElement('div');
+                    element.innerText = todo.title + ' ' + todo.dueDate;
+
+                    const deletButton = document.createElement('button');
+                    deletButton.innerText ='Delete';
+                    deletButton.style = 'margin-left: 15px';
+                    deletButton.onclick = deleteToDo;
+                    deletButton.id = todo.id;
+                    element.appendChild(deletButton);
+
+                    const todolist= document.getElementById('todo-list');
+                    todolist.appendChild(element);
+                });
+            }
+
+            function deleteToDo(event){
+                const deletButton = event.target;
+                const idToDelete = deletButton.id;
+            }
+            /*
+            let element = document.createElement('div');
+            element.innerText = todo1;
+            document.body.appendChild(element);
+
+            element = document.createElement('div');
+            element.innerText = todo2;
+            document.body.appendChild(element);
+
+            element = document.createElement('div');
+            element.innerText = todo3;
+            document.body.appendChild(element);
+            */
+
+
+            /*
+            function addTodo(todos){
+                let element = document.createElement('div');
+                element.innerText = todos;
+                document.body.appendChild(element);
+            }
+            
+            addTodo(todo1);
+            addTodo(todo2);
+            addTodo(todo3);
+            addTodo('New Todo');
+            */
+            
+        </script>
+    </body>
+</html>

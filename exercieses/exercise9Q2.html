@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <input id="inputnumber" type="text" />
+        <button onclick="toCM()">Convert to cm</button>
+        <button onclick="toINCH()">Convert to inch </button>
+       
+       
+       <script>
+           const inputnumber = document.getElementById('inputnumber');
+           
+           
+           
+           function toCM(){
+               
+               const result = inputnumber.value;
+               resultnum = +result * 2.54;
+               
+               let elementdiv = document.createElement('div');
+               elementdiv.innerText = resultnum;
+               document.body.appendChild(elementdiv);
+           }
+
+           function toINCH(){
+                const result = inputnumber.value;
+               resultnum = +result / 2.54;
+
+               let elementdiv = document.createElement('div');
+               elementdiv.innerText = resultnum;
+               document.body.appendChild(elementdiv);
+           }
+        </script>
+    </body>
+</html>
