@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title></title>r
+    </head>
+    <body>
+
+        <script>
+            function toUpper(str){
+                return str.toUpperCase();
+            }
+
+            function aboveFreezing(temps){
+               
+                const tempsAboveFreezing = temps.filter(function(temp){
+                    return temp>32;
+                })
+                return tempsAboveFreezing;
+            }
+
+            function removeRed(foodArray){
+                const nonRedFood = foodArray.filter(function (food){
+                    return food.color !== 'red';
+                });
+                return nonRedFood;
+            
+            }
+
+        </script>
+    </body>
+</html>

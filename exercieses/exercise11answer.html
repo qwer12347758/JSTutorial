@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <div id="foodlist"></div>
+
+        <script>
+
+            let total =0;
+
+            function createCart(food){
+
+                const listProperties = Object.keys(food);
+
+                listProperties.forEach(function(fruit){
+
+                    let fruitprice = food[fruit];
+        
+                    let element = document.createElement('div');
+                    element.innerText = fruit +' $'+ fruitprice;
+                    
+                    const addButton = document.createElement('button');
+                    addButton.innerText = 'Add';
+                    addButton.style = 'margin-left: 15px';
+                    addButton.onlick = function(){
+                        total = total + fruitprice;
+                    };
+                    element.appendChild(addButton);
+
+                    const foodlist = document.getElementById('foodlist');
+                    foodlist.appendChild(element);
+                })
+                
+            }
+
+        </script>
+    </body>
+</html>

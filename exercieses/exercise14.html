@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>My Todo APP</title>
+        <title>Exercise 14</title>
     </head>
     <body>
 
@@ -8,36 +8,16 @@
 
         <input id="date-picker" type="date"/>
 
-        <!--<button onclick="todo.push('new todo');">Press Me</button>-->
         <button onclick="addTodo()">Add Todo</button>
         
         <div id="todo-list"></div>
-        <!--<div>Get Groceries</div>
-        <div>Wash Car</div>
-        <div>Make Dinner</div>-->
+  
         <script>
-            /*
-            let todo1 = 'Get groceries'; 
-            let todo2 = 'Wash Car';
-            let todo3 = 'Make dinner';
-            let todo4 = 'Do Laudry';
-            */
-        
-            //const todo =['Get Groceries', 'Wash Car', 'Make Dinner'];
-            //todo.push('another todo');
-            //todo.pop();
+       
 
             //Model
 
-            let todo;
-
-            const savedTodo = JSON.parse(localStorage.getItem('todo')); // return string); // covert to array
-            
-            if (Array.isArray(savedTodo)){
-                todo = savedTodo;
-
-            }else{
-                todo=[{
+            let todo=[{
                 title: 'Get groceries',
                 dueDate: '2022-12-28',
                 id:'id1'
@@ -50,18 +30,9 @@
                 dueDate:'2023-1-1',
                 id:'id3'
             }];
-            }
-
-             
 
             render();
-            /*
-            todo.forEach(function(todos){
-                let element = document.createElement('div');
-                element.innerText = todos;
-                document.body.appendChild(element);
-            });
-            */
+      
 
             function createTodo(title,dueDate){
                 //const id =  new Date().getTime(); //return number 
@@ -72,8 +43,6 @@
                     dueDate:dueDate,
                     id: id
                 });
-
-                saveTodo();
             }
 
             function removeTodo(idToDelete){
@@ -84,11 +53,14 @@
                         return true;
                     }
                 })
-                saveTodo();
             }
 
-            function saveTodo(){
-                localStorage.setItem('todo',JSON.stringify(todo)); //covert array to string
+            function toggle(){
+                todo.forEach(function(todo){
+                    if (todo.id == todoID){
+                        todo.isDone = checked;
+                    }
+                });
             }
 
             //Controller
@@ -113,6 +85,15 @@
                 render();
             }
 
+            function checkTodo(){
+                const checkbox= event.target;
+                const todoId = checkbox.dataset.todoId;
+                const checked = checkbox.checked;
+
+                toggleTodo(todoId, checked);
+                render();
+            }
+
             //View
             function render (){
                 //reset the list to empety
@@ -129,39 +110,24 @@
                     deletButton.id = todo.id;
                     element.appendChild(deletButton);
 
+                    const checkButton = document.createElement('input');
+                    checkButton.type = 'checkbox';
+                    checkButton.onChange = checkTodo;
+                    checkButton.dataset.todoId = todo.id;
+                    if (todo.isDone === true){
+                        checkButton.checked = true;
+                    }else{
+                        checkButton.checked= false 
+                    }
+                    element.prepend(checkButton);
+
+
                     const todolist= document.getElementById('todo-list');
                     todolist.appendChild(element);
                 }); 
             }
 
-            
-            /*
-            let element = document.createElement('div');
-            element.innerText = todo1;
-            document.body.appendChild(element);
-
-            element = document.createElement('div');
-            element.innerText = todo2;
-            document.body.appendChild(element);
-
-            element = document.createElement('div');
-            element.innerText = todo3;
-            document.body.appendChild(element);
-            */
-
-
-            /*
-            function addTodo(todos){
-                let element = document.createElement('div');
-                element.innerText = todos;
-                document.body.appendChild(element);
-            }
-            
-            addTodo(todo1);
-            addTodo(todo2);
-            addTodo(todo3);
-            addTodo('New Todo');
-            */
+        
             
         </script>
     </body>
